@@ -4,5 +4,5 @@
 
 .column {
     display: flex;
-    flex-direction: col
+    flex-direction: row;
 }
