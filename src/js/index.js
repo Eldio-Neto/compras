@@ -29,6 +29,8 @@ function add_list() {
     let obj = { id: list.length, descItem: descItem.value, priceItem: priceItem.value };
     list.push(obj);
 
+    descItem.value = "";
+    priceItem.value = "";
     updateScreen();
     myStorage.setItem("items", JSON.stringify(list))
 }
