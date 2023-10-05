@@ -3,6 +3,8 @@ var myStorage = window.localStorage;
 var select = document.getElementById('tipo_gasto');
 var descItem = document.getElementById('descItem');
 var priceItem = document.getElementById('priceItem');
+var quant = document.getElementById('quantidade');
+
 var list = [];
 
 document.getElementById('salvar').addEventListener('click', (e) => {
@@ -21,33 +23,38 @@ var options = [
 ];
 
 options.forEach(element => {
-    select[element.id] = new Option(element.name, element.id)
+    select[element.id] = new Option(element.name, element.id);
 });
 
 
 function add_list() {
-    let obj = { id: list.length, descItem: descItem.value, priceItem: priceItem.value };
-    list.push(obj);
 
-    descItem.value = "";
-    priceItem.value = "";
-    updateScreen();
-    myStorage.setItem("items", JSON.stringify(list))
+    if (descItem.value && priceItem.value && quant.value) {
+        let obj = { id: list.length, descItem: descItem.value, priceItem: priceItem.value, quantidade: quant.value };
+        list.push(obj);
+
+        descItem.value = "";
+        priceItem.value = "";
+        updateScreen();
+        myStorage.setItem("items", JSON.stringify(list));
+    } else {
+        alert('Preencher todos os campos antes de Salvar.');
+    }
 }
 
 function updateScreen() {
-    var lista = "<ul>"
+    var lista = "<ul>";
     var total = 0;
 
     list.forEach((item => {
 
-        lista += "<li id-data=" + item.id + ">" + item.descItem + 'Valor: ' + item.priceItem + "<button onclick=deleteItem(this) id-data=" + item.id + ">" + "Apagar</button>" + "</li>"
-        total += parseFloat(item.priceItem);
-    }))
+        lista += "<li id-data=" + item.id + ">" + item.descItem + '    Valor: ' + item.priceItem + '  Quantidade: ' + quant.value + "<button onclick=deleteItem(this) id-data=" + item.id + ">" + "Apagar</button>" + "</li>";
+        total += (parseFloat(item.priceItem) * quant.value);
+    }));
 
-    lista += "</ul>"
+    lista += "</ul>";
 
-    document.getElementById("list").innerHTML = lista
+    document.getElementById("list").innerHTML = lista;
 
     if (total == 0) {
 
@@ -62,7 +69,7 @@ function deleteItem(element) {
     list = list.filter(item => item.id != element.getAttribute("id-data"));
 
     updateScreen();
-    myStorage.setItem("items", JSON.stringify(list))
+    myStorage.setItem("items", JSON.stringify(list));
 }
 
 function loadTasks() {
