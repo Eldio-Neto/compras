@@ -43,16 +43,31 @@ function add_list() {
 }
 
 function updateScreen() {
-    var lista = "<ul>";
+    var lista = "<table class='table table-bordered'>";
     var total = 0;
 
-    list.forEach((item => {
+    lista += `<thead><tr>
+        <th scope="col">#</th>
+        <th scope="col">Produto</th>
+        <th scope="col">Valor</th>
+        <th scope="col">Quantidade</th>
+        <th scope="col">Ação</th></tr>
+    </thead>`;
 
-        lista += "<li id-data=" + item.id + ">" + item.descItem + '    Valor: ' + item.priceItem + '  Quantidade: ' + quant.value + "<button onclick=deleteItem(this) id-data=" + item.id + ">" + "Apagar</button>" + "</li>";
+    lista += '<tbody>';
+
+    list.forEach((item, index) => {
+
+        lista += "<tr id-data=" + item.id + ">"
+            +
+            '<td>' + index + '</td>' + '<td>' + item.descItem + '</td>' + '<td>' + item.priceItem + '</td>' + '<td>' + item.quantidade + '</td>' + "<td><button class='btn btn-danger' onclick=deleteItem(this) id-data=" + item.id + ">" + "Apagar</button></td>"
+            +
+            "</tr>";
+
         total += (parseFloat(item.priceItem) * quant.value);
-    }));
+    });
 
-    lista += "</ul>";
+    lista += "</tbody></table>";
 
     document.getElementById("list").innerHTML = lista;
 

@@ -6,46 +6,90 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Compras</title>
     <link rel="stylesheet" href="./src/css/index.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 
 <body>
-    <div class="container">
-        <main class="column">
-            <table>
-                <tr>
-                    <label for=""> Descrição do produto:
-                        <input type="text" id="descItem">
-                    </label>
-                </tr>
-                <tr>
-                    <label for=""> Quantidade:
-                        <input name="quantidade" id="quantidade" type="number" />
+    <div class="">
+        <header class="p-3 text-bg-dark">
+            <div class="container">
+                <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                    <a href=" /" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                        LOGO
+                    </a>
 
-                    </label>
-                </tr>
-                <tr>
+                    <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                        <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
+                        <!-- <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
+                        <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
+                        <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
+                        <li><a href="#" class="nav-link px-2 text-white">About</a></li> -->
+                    </ul>
 
-                    <label for="">Preço:
-                        <input type="number" id="priceItem">
-                    </label>
-                </tr>
-                <tr>
-                    <label for="">Categoria:
-                        <select name="tipo_gasto" id="tipo_gasto">
-                        </select>
-                    </label>
-                </tr>
-                <tr>
-                    <button id="salvar">Salvar</button>
-                </tr>
-                <div>Total: <strong id="itemsTotal">0,00</strong></div>
-                <div id="list">
+                    <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+                        <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..."
+                            aria-label="Search">
+                    </form>
 
+                    <div class="text-end">
+                        <button type="button" class="btn btn-outline-light me-2">Login</button>
+                        <button type="button" class="btn btn-warning">Sign-up</button>
+                    </div>
                 </div>
-            </table>
+            </div>
+        </header>
+        <main>
+
+            <div class="col-md-7 col-lg-8 container mt-3">
+                <h4 class="mb-3">Adicione Produtos</h4>
+                <form class="needs-validation" novalidate>
+                    <div class="row g-3">
+                        <div class="col-sm-6">
+                            <label class="form-label" for="descItem"> Descrição do produto:</label>
+                            <input type="text" class="form-control" id="descItem" placeholder="" value="" required>
+                            <div class="invalid-feedback">
+                                Descrição do produto é necessária!
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label for="quantidade" class="form-label">Quantidade</label>
+                            <input type="number" class="form-control" id="quantidade" placeholder="" value="" required>
+                            <div class="invalid-feedback">
+                                Quantidade é necessária!
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label class="form-label" for="priceItem">Preço</label>
+                            <input type="text" class="form-control" id="priceItem" placeholder="" value="" required>
+                            <div class="invalid-feedback">
+                                Preço é necessário!
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label for="tipo_gasto" class="form-label">Categoria:</label>
+                            <select class="form-select" id="tipo_gasto" required>
+                            </select>
+                            <div class="invalid-feedback">
+                                Categoria é necessária!
+                            </div>
+                        </div>
+                        <div class="col-12 ">
+                            <button class="btn btn-dark w-100" id="salvar">Salvar</button>
+                        </div>
+                    </div>
+                    <div>Total: <strong id="itemsTotal">0,00</strong></div>
+                    <div id="list">
+                    </div>
         </main>
     </div>
     <script src="./src/js/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
