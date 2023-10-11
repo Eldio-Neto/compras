@@ -12,6 +12,18 @@ document.getElementById('salvar').addEventListener('click', (e) => {
     add_list();
 });
 
+quant.addEventListener('change', () => {
+    if (quant.value < 0) {
+        quant.value = 0;
+    }
+});
+
+priceItem.addEventListener('change', () => {
+    if (priceItem.value < 0) {
+        priceItem.value = 0;
+    }
+});
+
 loadTasks();
 
 var options = [
